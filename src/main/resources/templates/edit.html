@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Editare Produs</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Your custom CSS file -->
+</head>
+<body>
+<h1 th:if="${index != null}">Editează Produs</h1>
+<h1 th:if="${index == null}">Adaugă Produs</h1>
+
+<form th:action="@{${index != null} ? '/produse/edit/' + ${index} : '/produse/add'}" method="post">
+  <label>Nume:</label>
+  <input type="text" name="nume" th:value="${produs.nume}" required />
+  <br>
+  <label>Gramaj (g):</label>
+  <input type="number" name="gramaj" th:value="${produs.gramaj}" required />
+  <br>
+  <label>Preț (lei):</label>
+  <input type="number" name="pret" th:value="${produs.pret}" step="0.01" required />
+  <br>
+  <button type="submit">Trimite</button>
+</form>
+<a href="/produse">Înapoi</a>
+</body>
+</html>

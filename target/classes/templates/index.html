@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Produse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Your custom CSS file -->
+</head>
+<body>
+<h1>Produse</h1>
+<a href="/produse/add">Adaugă Produs</a>
+<div class="container mt-5">
+  <h2 class="text-center">Product List</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gramaj</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="produs, iterStat : ${produse}">
+      <th scope="row" th:text="${iterStat.index + 1}"></th>
+      <td th:text="${produs.nume}"></td>
+      <td th:text="${produs.gramaj}"></td>
+      <td th:text="${produs.pret}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
