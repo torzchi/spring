@@ -5,14 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product List</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/styles.css"> <!-- Your custom CSS file -->
 </head>
 <body>
 <h1 th:if="${index != null}">Editează Produs</h1>
 <h1 th:if="${index == null}">Adaugă Produs</h1>
 
-<form th:action="@{${index != null} ? '/produse/edit/' + ${index} : '/produse/add'}" method="post">
+<form th:action="${index != null} ? '/produse/edit/' + ${index} : '/produse/add'" method="post">
   <label>Nume:</label>
   <input type="text" name="nume" th:value="${produs.nume}" required />
   <br>
