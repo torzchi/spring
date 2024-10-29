@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Produse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Produse</h1>
+<a href="/produse/add" class="btn btn-primary mb-3">Adaugă Produs</a>
+<div class="container mt-5">
+  <h2 class="text-center">Product List</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gramaj</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th> <!-- Add Actions column -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="produs, iterStat : ${produse}">
+      <th scope="row" th:text="${iterStat.index + 1}"></th>
+      <td th:text="${produs.nume}"></td>
+      <td th:text="${produs.gramaj}"></td>
+      <td th:text="${produs.pret}"></td>
+      <td>
+        <a th:href="@{/produse/edit/{index}(index=${iterStat.index+1})}" class="btn btn-warning">Edit</a>
+        <a th:href="@{/produse/delete/{index}(index=${iterStat.index+1})}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+      </td> <!-- Edit button added here -->
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
